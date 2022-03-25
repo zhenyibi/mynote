@@ -2,12 +2,17 @@ package com.mynote;
 
 import com.mynote.util.DBUtil;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author zhenyiBi
  * @date 2022/3/25
  */
 public class TestDB {
+
+    //使用日志工厂类，记录日志
+    private Logger logger = LoggerFactory.getLogger(TestDB.class);
 
     /**
      * 单元测试方法
@@ -24,6 +29,9 @@ public class TestDB {
     @Test
     public void testDB(){
         System.out.println(DBUtil.getConnection());
+        //使用日志
+        logger.info("获取数据库连接："+ DBUtil.getConnection());
+        logger.info("获取数据库连接：{}",DBUtil.getConnection());
     }
 
 }
