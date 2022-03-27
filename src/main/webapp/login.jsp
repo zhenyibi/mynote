@@ -5,7 +5,7 @@
   Time: 22:36
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -34,12 +34,12 @@
                     <%-- actionName表示用户行为，通过这个参数可以在 UserServlet 中判断用户当前想要操作的功能 --%>
                     <%-- 其实就是为了不用写多个servlet而加了一个标志 --%>
                     <input type="hidden" name="actionName" value="login"/>
-                    <input type="text" class="user yahei16" id="userName" name="userName" value=""
+                    <input type="text" class="user yahei16" id="userName" name="userName" value="${resultInfo.result.uname}"
                            style="width: 248px"/><br/><br/>
-                    <input type="password" class="pwd yahei16" id="userPwd" name="userPwd" value=""
+                    <input type="password" class="pwd yahei16" id="userPwd" name="userPwd" value="${resultInfo.result.upwd}"
                            style="width: 248px"/><br/><br/>
                     <input name="rem" type="checkbox" value="1" class="inputcheckbox"/> <label>记住我</label>
-                    <span id="msg" style="color: #ff0000; font-size: 12px; margin-left: 10px;"></span><br/><br/>
+                    <span id="msg" style="color: #ff0000; font-size: 12px; margin-left: 10px;">${resultInfo.msg}</span><br/><br/>
                     <input type="button" class="log jc yahei16" value="登 录" onclick="checkLogin()"
                            style="margin-right: 15px"/>
                     <input type="reset" value="取 消" class="reg jc yahei18" onclick="clearContent()"/>
