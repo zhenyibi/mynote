@@ -6,12 +6,37 @@ import com.mynote.util.DBUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author zhenyiBi
  * @date 2022/3/27
  */
 public class UserDao {
+
+    /**
+     * 通过用户名查询用户对象
+     * 1.定义sql语句
+     * 2.设置参数集合
+     * 调用BaseDao的查询方法
+     *
+     * @param userName 用户名
+     * @return 用户
+     */
+    public User queryUserByName(String userName) {
+        //定义sql语句
+        String sql = "select * from tb_user where uname = ?";
+
+        //设置参数集合
+        List<Object> params = new ArrayList<>();
+        params.add(userName);
+
+        //调用BaseDao的查询方法
+        User user = (User) BaseDao.queryRow(sql, params, User.class);
+
+        return user;
+    }
 
     /**
      * 通过用户名查询用户对象，返回用户对象
@@ -26,7 +51,7 @@ public class UserDao {
      * @param userName 用户名
      * @return 用户
      */
-    public User queryUserByName(String userName) {
+    public User queryUserByNameOrigin(String userName) {
         User user = null;
         Connection connection = null;
         PreparedStatement preparedStatement = null;
