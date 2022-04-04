@@ -78,7 +78,7 @@ public class UserServlet extends HttpServlet {
                 response.addCookie(cookie);
             }
             //重定向跳转到index页面（云日记首页）
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("index");
 
         } else { //失败
             //将ResultInfo对象设置request作用域中
